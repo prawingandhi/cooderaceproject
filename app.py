@@ -38,14 +38,13 @@ if file is not None:
         doc_splits = text_splitter.split_documents(doc)
 
 
-        embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        embedding = HuggingFaceEmbeddings(model_name="intfloat/multilingual-e5-base")
 
-
-        vectorstore = Chroma.from_documents(doc_splits, embedding)
+        vectorstore = Chroma.from_documents(doc_splits, embedding, collection_name="qa_tamil_768")
         retriver = vectorstore.as_retriever(search_type="similarity")
 
 
-        llm = groq(api_key=groq_api_key,model="mixtral-8x7b-32768")
+        llm = groq(api_key=groq_api_key,model="llama-3.1-8b-instant")
 
         prompt_template = ChatPromptTemplate.from_template("""
         You are a  assistant. 
