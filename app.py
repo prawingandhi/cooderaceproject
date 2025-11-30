@@ -2,7 +2,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
+groq_api_key = st.secrets["GROQ_API_KEY"]
+
+#os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 import streamlit as st
 from langchain_groq import ChatGroq as groq
