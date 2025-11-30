@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
+groq_api_key = os.getenv("GROQ_API_KEY")
 #os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 import streamlit as st
@@ -15,12 +15,12 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
-groq_api_key = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
+#groq_api_key = st.secrets.get("GROQ_API_KEY") | os.getenv("GROQ_API_KEY")
 
-if not groq_api_key:
+"""if not groq_api_key:
     st.error("❌ GROQ_API_KEY not found in Streamlit Secrets or .env.")
 else:
-    st.success("✅ Groq API key loaded successfully")
+    st.success("✅ Groq API key loaded successfully")"""
 
 st.title("Wellcome to Q/A in Tamil for CodeRace 🇮🇳")
 
@@ -73,6 +73,8 @@ if file is not None:
 
         question = st.text_input("உங்கள் கேள்வியை உள்ளிடவும்:")
 
+        answer = doc_chain.invoke({"question":" வைகாசி பிரம்மோற்ஸவத்தின் போது சௌரிராஜ பெருமாள் எந்த மூர்த்திகளாக, எந்த நேரங்களில் காட்சி தருகிறார்?"})
+        print(answer)
         if question:
                 answer = doc_chain.invoke(question)
                 st.subheader("பதில்:")
