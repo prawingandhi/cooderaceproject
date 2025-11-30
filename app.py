@@ -15,13 +15,14 @@ from langchain_core.runnables import RunnablePassthrough
 
 st.title("Wellcome to Q/A in Tamil for CodeRace 🇮🇳")
 
-file = st.file_uploader("Select the file  : ")
+file = st.file_uploader("Select the file  : ", type=["pdf"])
 if st.button("Upload PDF"):
     if file is not None:
-        with open("tem_file.pdf", "wb") as f:
+        temp_path = "tem_file.pdf"
+        with open(temp_path, "wb") as f:
              f.write(file.read())
 
-        loader = PyPDFLoader(file)
+        loader = PyPDFLoader(temp_path)
         doc = loader.load()
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
