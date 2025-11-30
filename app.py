@@ -65,7 +65,7 @@ if file is not None:
         question = st.text_input("உங்கள் கேள்வியை உள்ளிடவும்:")
 
         if question:
-                answer = doc_chain.invoke({"question": question})
+                answer = doc_chain.invoke(question)
                 st.subheader("பதில்:")
                 st.write(answer)
 
