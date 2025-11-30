@@ -16,8 +16,7 @@ from langchain_core.runnables import RunnablePassthrough
 st.title("Wellcome to Q/A in Tamil for CodeRace 🇮🇳")
 
 file = st.file_uploader("Select the file  : ", type=["pdf"])
-if st.button("Upload PDF"):
-    if file is not None:
+if file is not None:
         temp_path = "tem_file.pdf"
         with open(temp_path, "wb") as f:
              f.write(file.read())
@@ -70,5 +69,5 @@ if st.button("Upload PDF"):
                 st.subheader("பதில்:")
                 st.write(answer)
 
-    else:
+else:
         st.write("Please enter a valid file .")             
