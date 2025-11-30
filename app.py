@@ -73,8 +73,7 @@ if file is not None:
 
         question = st.text_input("உங்கள் கேள்வியை உள்ளிடவும்:")
 
-        answer = doc_chain.invoke({"question":" வைகாசி பிரம்மோற்ஸவத்தின் போது சௌரிராஜ பெருமாள் எந்த மூர்த்திகளாக, எந்த நேரங்களில் காட்சி தருகிறார்?"})
-        print(answer)
+        #answer = doc_chain.invoke({"question":" வைகாசி பிரம்மோற்ஸவத்தின் போது சௌரிராஜ பெருமாள் எந்த மூர்த்திகளாக, எந்த நேரங்களில் காட்சி தருகிறார்?"})
         if question:
                 answer = doc_chain.invoke(question)
                 st.subheader("பதில்:")
