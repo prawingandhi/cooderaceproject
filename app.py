@@ -23,6 +23,7 @@ else:
     st.success("✅ Groq API key loaded successfully")"""
 
 st.title("Wellcome to Q/A in Tamil for CodeRace 🇮🇳")
+st.write("Loaded API key:", groq_api_key)
 
 file = st.file_uploader("Select the file  : ", type=["pdf"])
 if file is not None:
@@ -75,9 +76,10 @@ if file is not None:
 
         #answer = doc_chain.invoke({"question":" வைகாசி பிரம்மோற்ஸவத்தின் போது சௌரிராஜ பெருமாள் எந்த மூர்த்திகளாக, எந்த நேரங்களில் காட்சி தருகிறார்?"})
         if question:
-                answer = doc_chain.invoke(question)
+                answer = doc_chain.invoke({"question": question})
                 st.subheader("பதில்:")
                 st.write(answer)
+
 
 else:
         st.write("Please enter a valid file .")             
