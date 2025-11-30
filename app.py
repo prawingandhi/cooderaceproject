@@ -37,7 +37,7 @@ if file is not None:
         retriver = vectorstore.as_retriever(search_type="similarity")
 
 
-        llm = groq(model="mixtral-8x7b")
+        llm = groq(api_key=groq_api_key,model="mixtral-8x7b")
 
         prompt_template = ChatPromptTemplate.from_template("""
         You are a  assistant. 
