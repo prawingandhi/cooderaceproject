@@ -76,7 +76,7 @@ if file is not None:
 
         #answer = doc_chain.invoke({"question":" வைகாசி பிரம்மோற்ஸவத்தின் போது சௌரிராஜ பெருமாள் எந்த மூர்த்திகளாக, எந்த நேரங்களில் காட்சி தருகிறார்?"})
         if question:
-                answer = doc_chain.invoke({"question": question})
+                answer = doc_chain.invoke(question)
                 st.subheader("பதில்:")
                 st.write(answer)
 
