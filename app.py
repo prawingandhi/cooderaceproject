@@ -13,11 +13,14 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
-st.title("Wellcome to Q/A in Tamil 🇮🇳")
+st.title("Wellcome to Q/A in Tamil for CodeRace 🇮🇳")
 
-file = st.text_input("Enter The Full Path : ")
+file = st.file_uploader("Select the file  : ")
 if st.button("Upload PDF"):
-    if file:
+    if file is not None:
+        with open("tem_file.pdf", "wb") as f:
+             f.write(file.read())
+
         loader = PyPDFLoader(file)
         doc = loader.load()
 
@@ -42,6 +45,7 @@ if st.button("Upload PDF"):
         1. Use the context given below to give the correct answer to the question.
         2. if contex have any poem or songs give it along with that                                                   
         3. Always give the answer in Tamil.
+        4. if the question is in english , translate the question to Tamil and then answer it in tamil.                                                   
         4. if the question is not answerable from the context, reply with "The answer is not available in the provided document."                                                   
 
 
@@ -66,4 +70,4 @@ if st.button("Upload PDF"):
                 st.write(answer)
 
     else:
-        st.write("Please enter a valid file path.")             
+        st.write("Please enter a valid file .")             
