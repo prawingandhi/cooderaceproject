@@ -17,13 +17,8 @@ from langchain_core.runnables import RunnablePassthrough
 
 #groq_api_key = st.secrets.get("GROQ_API_KEY") | os.getenv("GROQ_API_KEY")
 
-"""if not groq_api_key:
-    st.error("❌ GROQ_API_KEY not found in Streamlit Secrets or .env.")
-else:
-    st.success("✅ Groq API key loaded successfully")"""
 
 st.title("Wellcome to Q/A in Tamil for CodeRace 🇮🇳")
-st.write("Loaded API key:", groq_api_key)
 
 file = st.file_uploader("Select the file  : ", type=["pdf"])
 if file is not None:
