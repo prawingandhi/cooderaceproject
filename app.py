@@ -49,8 +49,9 @@ if file is not None:
         1. Use the context given below to give the correct answer to the question.
         2. if contex have any poem or songs give it along with that                                                   
         3. Always give the answer in Tamil.
-        4. if the question is in english , translate the question to Tamil and then answer it in tamil.                                                   
-        4. if the question is not answerable from the context, reply with "The answer is not available in the provided document."                                                   
+        4. Avoid repeating the same lines or poems multiple times.
+        5. if the question is in english , translate the question to Tamil and then answer it in tamil.                                                   
+        6. if the question is not answerable from the context, reply with "The answer is not available in the provided document."                                                   
 
 
         Question: {question}
@@ -68,11 +69,13 @@ if file is not None:
 
         question = st.text_input("உங்கள் கேள்வியை உள்ளிடவும்:")
 
+        
+
         #answer = doc_chain.invoke({"question":" வைகாசி பிரம்மோற்ஸவத்தின் போது சௌரிராஜ பெருமாள் எந்த மூர்த்திகளாக, எந்த நேரங்களில் காட்சி தருகிறார்?"})
         if question:
                 answer = doc_chain.invoke(question)
                 st.subheader("பதில்:")
-                st.write(answer)
+                st.write(answer.content)
 
 
 else:
