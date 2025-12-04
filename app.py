@@ -18,7 +18,7 @@ from langchain_core.runnables import RunnablePassthrough
 #groq_api_key = st.secrets.get("GROQ_API_KEY") | os.getenv("GROQ_API_KEY")
 
 
-st.title("Wellcome to Q/A in Tamil for CodeRace 🇮🇳")
+st.title("Wellcome to Q/A in Tamil for CodeRays 🇮🇳")
 
 file = st.file_uploader("Select the file  : ", type=["pdf"])
 if file is not None:
