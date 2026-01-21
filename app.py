@@ -1,3 +1,7 @@
+import sys
+import streamlit as st
+
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -21,6 +25,8 @@ from langchain_core.runnables import RunnablePassthrough
 st.title("Wellcome to Q/A in Tamil for CodeRays 🇮🇳")
 
 file = st.file_uploader("Select the file  : ", type=["pdf"])
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
 if file is not None:
         temp_path = "tem_file.pdf"
         with open(temp_path, "wb") as f:
@@ -61,7 +67,7 @@ if file is not None:
         )
         # Build the chain
         doc_chain = (
-            {"context": retriver, "question": RunnablePassthrough()}
+            {"context": retriver | format_docs, "question": RunnablePassthrough()}
             | prompt_template
             | llm
         )
